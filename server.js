@@ -34,10 +34,10 @@ mongoose.connect(MONGODB_URI,{ useNewUrlParser: true });
 // mongoose.connect("mongodb://localhost/michaeldb", { useNewUrlParser: true });
 
 
-// Routes
-app.get("/", function(req, res) {
-  res.json(path.join(__dirname, "public/index.html"));
-});
+// // Routes
+// app.get("/", function(req, res) {
+//   res.json(path.join(__dirname, "public/index.html"));
+// });
 
 
 
