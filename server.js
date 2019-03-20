@@ -23,13 +23,23 @@ app.use(logger("dev"));
 // Parse request body as JSON
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-// Make public a static folder
+// Make public as static folder
 app.use(express.static("public"));
 
 // Connect to the Mongo DB
-mongoose.connect("mongodb://localhost/michaeldb", { useNewUrlParser: true });
+var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/michaeldb"
+
+mongoose.connect(MONGODB_URI);
+
+// mongoose.connect("mongodb://localhost/michaeldb", { useNewUrlParser: true });
+
 
 // Routes
+app.get("/", function(req, res) {
+  res.json(path.join(__dirname, "public/index.html"));
+});
+
+
 
 // A GET route for scraping the echoJS website
 app.get("/scrape", function(req, res) {
